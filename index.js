@@ -1,18 +1,21 @@
-const inputA = document.querySelector('.inputA');
-const inputB = document.querySelector('.inputB');
-const selectOperation = document.querySelector('.selectOperation');
-const buttonRes = document.querySelector('.buttonRes');
-const outputP = document.querySelector('.outputP');
+const inputA = document.querySelector('.js-input-a');
+const inputB = document.querySelector('.js-input-b');
+const selectOperation = document.querySelector('.js-select-operation');
+const btnResultNode = document.querySelector('.js-btn-result');
+const outputBlock = document.querySelector('.js-output');
+const btnReset = document.querySelector('.js-btn-reset');
+outputBlock.innerHTML = 0;
 
-buttonRes.addEventListener('click', function () {
+btnResultNode.addEventListener('click', function () {
   const a = Number(inputA.value);
   const b = Number(inputB.value);
   const operation = selectOperation.value;
+  const result = calculate({ a, b, operation });
+  outputBlock.innerHTML = result;
+});
 
-  const result = calculate({
-    a,
-    b,
-    operation,
-  });
-  outputP.innerHTML = result;
+btnReset.addEventListener('click', () => {
+  inputB.value = null;
+  inputA.value = null;
+  outputBlock.innerHTML = 0;
 });
